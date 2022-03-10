@@ -17,5 +17,8 @@ docker login
 make intel
 # nvidia platform
 make nvidia
+# push docker image to dockerhub
+make push_nv
+make push_intel
 ```
 

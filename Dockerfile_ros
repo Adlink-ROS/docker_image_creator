@@ -67,6 +67,18 @@ RUN apt-get update && apt-get install -y \
     apt-get clean
 RUN sudo rosdep init && \
     rosdep update
+
+#
+# Neuron Library
+#
+RUN curl -L --insecure https://neuron.adlinktech.com/debian/repo_signing.key | sudo apt-key add - && \
+    echo 'Acquire::https::neuron.adlinktech.com::Verify-Peer "false";' | sudo tee /etc/apt/apt.conf.d/99roscube > /dev/null && \
+    echo 'Acquire::https::neuron.adlinktech.com::Verify-Host "false";' | sudo tee -a /etc/apt/apt.conf.d/99roscube > /dev/null && \
+    echo "deb [arch=$(dpkg --print-architecture)] https://neuron.adlinktech.com/debian/common $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/roscube.list > /dev/null && \
+    sudo apt-get update && \
+    sudo apt-get -y install neuron-library && \
+    rm -rf /var/lib/apt/lists/* && \
+    apt-get clean
  
 
 CMD ["/bin/bash"]
