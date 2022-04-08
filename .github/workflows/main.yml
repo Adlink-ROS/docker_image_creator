@@ -1,0 +1,21 @@
+name: Docker Image Build Jobs.
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  build_intel_docker_image:
+    runs-on: [self-hosted, Linux, X64]
+    steps:
+      - name: Checkout Branch
+        uses: actions/checkout@v2
+      - name: Build docker
+        run: make intel
+  build_nvidia_docker_image:
+    runs-on: [self-hosted, Linux, ARM64]
+    steps:
+      - name: Checkout Branch
+        uses: actions/checkout@v2
+      - name: Build docker
+        run: make nvidia

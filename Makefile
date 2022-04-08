@@ -1,9 +1,9 @@
 ubuntu_version=20.04
-intel_version=1.0.1
-nv_version=1.0.1
+intel_version=1.0.2
+nv_version=1.0.2
 jetpack_version=r32.6
-intel_image=adlinkrmt/rosmenu_ubuntu$(ubuntu_version)_intel
-nv_image=adlinkrmt/rosmenu_ubuntu$(ubuntu_version)_nv_$(jetpack_version)
+intel_image=ghcr.io/rosmenu_ubuntu$(ubuntu_version)_intel
+nv_image=ghcr.io/rosmenu_ubuntu$(ubuntu_version)_nv_$(jetpack_version)
 
 intel:
 	docker build -t $(intel_image):$(intel_version) --build-arg IMAGE=ubuntu:$(ubuntu_version) -f Dockerfile_ros .
