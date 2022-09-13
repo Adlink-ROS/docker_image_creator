@@ -12,6 +12,17 @@ sudo groupadd docker
 sudo gpasswd -a $USER docker
 ```
 
+* Create image for testing
+
+```bash
+# Intel platform
+make intel
+# nvidia platform
+make nvidia
+```
+
+# Below commands are no longer used
+
 * You need to login the dockerhub first.
 
 ```bash
